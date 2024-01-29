@@ -42,19 +42,18 @@ const Navbar = () => {
                     )}
                 </ul>
             </div>
+
             {/* Mobile/Tablet Navigation */}
             {/* Menu open close click event */}
-            <div onClick={handleNav} className='block fixed bottom-5 left-5 lg:hidden bottom items-center justify-between mx-auto'>
-                {nav ? <XMarkIcon className='h-12 w-12 p-1 text-gray-400 hover:text-gray-600 cursor-pointer' /> : <Bars4Icon className='h-12 w-12 p-1 text-gray-400 hover:text-gray-600 cursor-pointer'/>}
+            <div onClick={handleNav} className='block fixed bottom-5 left-5 lg:hidden'>
+                {nav ? <XMarkIcon className='h-10 w-10 text-gray-400 hover:text-gray-600 cursor-pointer' /> : <Bars4Icon className='h-10 w-10 p-1 text-gray-400 hover:text-gray-600 cursor-pointer'/>}
             </div>
-            {/*  */}
+            {/* Open menu */}
             <ul
-            className={
-            nav
-                ? 'fixed md:hidden bottom-8 left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500'
-                : 'ease-in-out w-[60%] duration-500 fixed bottom-8 left-[-100%]'
-            }>
-                <li>Det er super</li>
+            className={nav
+                ? 'block fixed left-5 bottom-16 lg:hidden h-1/3 rounded-3xl bg-slate-200 ease-in-out duration-500'
+                : 'ease-in-out duration-500 fixed hidden origin-bottom-left'}>
+                    <li>Hej med dig</li>
             </ul>
         </>
     );
