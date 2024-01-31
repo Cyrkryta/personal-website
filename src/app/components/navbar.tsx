@@ -33,11 +33,11 @@ const Navbar = () => {
     return (
         <>
             {/* Desktop Navigation */}
-            <div className='hidden fixed bottom-5 left-1/2 -translate-x-1/2 lg:inline-flex mx-auto justify-between w-1/3 rounded-3xl bg-slate-200'>
-                <ul className='flex p-4 w-full justify-between'>
+            <div className='hidden fixed bottom-10 left-1/2 -translate-x-1/2 md:inline-flex mx-auto justify-between w-96 rounded-2xl'>
+                <ul className='flex p-2 w-full justify-between'>
                     {navItems.map((item) => (
                         <li key={item.id} className='cursor-pointer'>
-                            <Link href={item.ref}><div className="h-10 w-10 text-gray-400 hover:text-gray-600">{item.logo}</div></Link>
+                            <Link href={item.ref} className='active:h-8 active:w-8 hover:motion-safe:animate-pulse active:text-gray-600'><div className="h-10 w-10 active:h-8 active:w-8 text-slate-200 hover:text-gray-600 opacity-100">{item.logo}</div></Link>
                         </li>)
                     )}
                 </ul>
@@ -45,15 +45,19 @@ const Navbar = () => {
 
             {/* Mobile/Tablet Navigation */}
             {/* Menu open close click event */}
-            <div onClick={handleNav} className='block fixed bottom-5 left-5 lg:hidden'>
-                {nav ? <XMarkIcon className='h-10 w-10 text-gray-400 hover:text-gray-600 cursor-pointer' /> : <Bars4Icon className='h-10 w-10 p-1 text-gray-400 hover:text-gray-600 cursor-pointer'/>}
+            <div onClick={handleNav} className='block fixed bottom-5 left-6 lg:hidden'>
+                {nav ? <XMarkIcon className='h-10 w-10 text-gray-400 hover:text-gray-600 cursor-pointer' /> : <Bars4Icon className='h-10 w-10 p-1 text-gray-500 hover:text-gray-600 cursor-pointer'/>}
             </div>
             {/* Open menu */}
             <ul
             className={nav
-                ? 'block fixed left-5 bottom-16 lg:hidden h-1/3 rounded-3xl bg-slate-200 ease-in-out duration-500'
-                : 'ease-in-out duration-500 fixed hidden origin-bottom-left'}>
-                    <li>Hej med dig</li>
+                ? 'flex flex-col fixed mx-auto justify-between items-center left-5 bottom-16 md:hidden h-60 w-12 rounded-2xl p-2'
+                : 'fixed hidden origin-bottom-left transition ease-in-out duration-500'}>
+                {navItems.map((item) => (
+                    <li key={item.id} className='cursor-pointer'>
+                        <Link href={item.ref} className='active:h-8 active:w-8 hover:motion-safe:animate-pulse active:text-gray-600'><div className='h-10 w-10 active:h-8 active:w-8 text-slate hover:text-gray-600 text-slate-200'> {item.logo} </div></Link>
+                    </li>
+                ))}
             </ul>
         </>
     );
